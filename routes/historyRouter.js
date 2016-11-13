@@ -35,7 +35,9 @@ historyRouter.route('/:daysBack')
     .get(function(req, res, next) {
         var dateTo;
         var dateFrom = new Date();
-        var daysMod = parseInt(req.params.daysBack);
+        // var daysMod = (parseInt(req.params.daysBack)/2) | 0;
+        // var daysMod = parseInt(req.params.daysBack);
+        var daysMod = 1;
         dateTo = new Date(Date.now());
         dateFrom.setDate(dateTo.getDate() - daysMod);
         var query = Readings.aggregate([{

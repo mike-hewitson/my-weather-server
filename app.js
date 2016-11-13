@@ -36,8 +36,14 @@ var myLogger = new winston.Logger({
 myLogger.transports.console.level = process.env.LOGGING || 'warn';
 
 mongoose.connect(process.env.MONGODB_URI);
+myLogger.debug(process.env.MONGODB_URI);
+// myLogger.debug('here 1');
+
 var db = mongoose.connection;
+
+// myLogger.debug('here 2');
 db.on('error', console.error.bind(console, 'connection error:'));
+// myLogger.debug('here 3');
 db.once('open', function() {
     // we're connected!
     myLogger.info("Connected correctly to server");
