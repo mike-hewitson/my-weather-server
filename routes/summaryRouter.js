@@ -84,7 +84,7 @@ historyRouter.route('/')
         });
     });
 
-historyRouter.route('/:sensor/:daysBack')
+historyRouter.route('/:location/:daysBack')
     .all(function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -105,7 +105,7 @@ historyRouter.route('/:sensor/:daysBack')
             }
         }, {
             "$match": {
-                "sensors.sensor": { "$eq": req.params.sensor }
+                "sensors.sensor": { "$eq": req.params.location }
             }
         }, {
             $project: {
