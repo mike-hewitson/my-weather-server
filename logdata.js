@@ -43,6 +43,7 @@ forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
         wind: data.currently.windSpeed.toFixed(1),
         pressure: data.currently.pressure.toFixed(1),
         hum: (data.currently.humidity * 100).toFixed(1),
+        precip: (data.currently.precipIntensity).toFixed(2),
         cloud: (data.currently.cloudCover * 100).toFixed(1)
     });
 
@@ -55,6 +56,7 @@ forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
             wind: data.currently.windSpeed.toFixed(1),
             pressure: data.currently.pressure.toFixed(1),
             hum: (data.currently.humidity * 100).toFixed(1),
+            precip: (data.currently.precipIntensity).toFixed(2),
             cloud: (data.currently.cloudCover * 100).toFixed(1)
         });
         myLogger.debug(reading);
@@ -84,4 +86,3 @@ forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
 });
 
 // process.exit(1);
-
