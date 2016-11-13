@@ -17,6 +17,24 @@ var sensorSchema = new Schema({
         max: 40,
         required: true
     },
+    wind: {
+        type: Number,
+        min: 0,
+        max: 150,
+        required: true
+    },
+    pressure: {
+        type: Number,
+        min: 900,
+        max: 1200,
+        required: true
+    },
+    cloud: {
+        type: Number,
+        min: 0,
+        max: 100,
+        required: true
+    },
     hum: {
         type: Number,
         min: 0,

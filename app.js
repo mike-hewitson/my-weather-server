@@ -20,20 +20,22 @@ var mongoose = require('mongoose');
 var myLogger = new winston.Logger({
     transports: [
         new winston.transports.Console({
-            json: true,
+            // json: true,
             expressFormat: true,
             colorize: true
-        }),
-        new winston.transports.Papertrail({
-            host: 'logs4.papertrailapp.com',
-            port: 32583,
-            program: 'rest-server',
-            colorize: true
+        // }),
+        // new winston.transports.Papertrail({
+        //     host: 'logs4.papertrailapp.com',
+        //     port: 32583,
+        //     program: 'rest-server',
+        //     colorize: true
         })
     ]
 });
 
-var url = 'mongodb://'+process.env.DB_USER+":"+process.env.DB_PWD+"@"+process.env.DB_SERVER+':'+process.env.DB_PORT+'/charcuterie';
+myLogger.transports.console.level = process.env.LOGGING || 'warn';
+
+var url = 'mongodb://'+process.env.DB_USER+":"+process.env.DB_PWD+"@"+process.env.DB_SERVER+':'+process.env.DB_PORT+'/weather';
 mongoose.connect(url);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -57,13 +59,12 @@ app.use(expressWinston.logger({
             json: true,
             expressFormat: true,
             colorize: true
-        }),
-        new Papertrail({
-            host: 'logs4.papertrailapp.com',
-            port: 32583,
-            program: 'rest-server',
-            colorize: true
-
+        // }),
+        // new Papertrail({
+        //     host: 'logs4.papertrailapp.com',
+        //     port: 32583,
+        //     program: 'rest-server',
+        //     colorize: true
         })
     ]
 }));
@@ -88,13 +89,12 @@ app.use(expressWinston.errorLogger({
             expressFormat: true,
             colorize: true
         }),
-        new Papertrail({
-            host: 'logs4.papertrailapp.com',
-            port: 32583,
-            program: 'rest-server',
-            colorize: true
-
-        })
+        // new Papertrail({
+        //     host: 'logs4.papertrailapp.com',
+        //     port: 32583,
+        //     program: 'rest-server',
+        //     colorize: true
+        // })
     ]
 }));
 

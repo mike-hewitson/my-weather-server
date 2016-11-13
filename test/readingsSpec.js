@@ -25,27 +25,31 @@ var new_reading = {
     "date": Date("2016-03-22T08:26:13.158Z"),
     "sensors": [{
         // "_id" : 1,
-        "hum": 56,
-        "sensor": "Ambient",
-        "temp": 22
-    }, {
-        // "_id" : 2,
-        "hum": 8,
-        "sensor": "Fridge",
-        "temp": 7
+        "sensor": "Sandton",
+        "temp": 21,
+        "wind": 12,
+        "pressure": 1018,
+        "cloud": 5,
+        "hum": 56
     }, {
         // "_id" : 3,
-        "hum": 56,
-        "sensor": "Curing",
-        "temp": 3
+        "sensor": "Paradise Beach",
+        "temp": 17,
+        "wind": 20,
+        "pressure": 1028,
+        "cloud": 25,
+        "hum": 75
     }]
 };
 
 var new_sensor = {
     // "_id": 3,
     sensor: "Bob",
-    hum: 33,
-    temp: 22
+        "temp": 17,
+        "wind": 20,
+        "pressure": 1028,
+        "cloud": 25,
+        "hum": 75
 };
 
 /*

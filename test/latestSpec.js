@@ -26,9 +26,9 @@ var readings_fixture = require('./fixtures/readings_fixture');
  */
 describe('Latest', function() {
     beforeEach(function(done) {
-        Readings.remove({}, function(err, res) { // don't use drop() as this will occasionnnaly raise a background operation error
+        Readings.remove({}, function(err, res) {
             var difference = new Date() - new Date(readings_fixture[9].date);
-            adjusted_readings = readings_fixture.map( function(element) {
+            adjusted_readings = readings_fixture.map(function(element) {
                 var new_date = new Date(new Date(element.date).getTime() + difference);
                 var new_element = element;
                 new_element.date = new_date.toJSON();
@@ -39,7 +39,7 @@ describe('Latest', function() {
     });
 
     describe('GET /latest', function() {
-        it('respond with code HTTP_OK + list of readings', function(done) {
+        it('respond with code HTTP_OK + one reading', function(done) {
             request(app)
                 .get('/latest')
                 .set('Accept', 'application/json')

@@ -64,12 +64,18 @@ describe('Summary', function() {
                     assert.equal(res.body.length, 1);
                     assert.equal(res.body[0]._id.date, todays_date);
                     assert.equal(res.body[0].count, 7);
-                    assert.equal(res.body[0].avgHum, 53.95714351109096);
-                    assert.equal(res.body[0].avgTemp, 23.171428680419922);
-                    assert.equal(res.body[0].maxTemp, 23.5);
-                    assert.equal(res.body[0].minTemp, 23);
-                    assert.equal(res.body[0].maxHum, 54.70000076293945);
-                    assert.equal(res.body[0].minHum, 53.400001525878906);
+                    assert.equal(res.body[0].avgHum, 56);
+                    assert.equal(res.body[0].avgTemp.toFixed(1), 22.7);
+                    assert.equal(res.body[0].avgWind.toFixed(1), 10);
+                    assert.equal(res.body[0].avgCloud.toFixed(1), 12);
+                    assert.equal(res.body[0].maxTemp, 22.7);
+                    assert.equal(res.body[0].minTemp, 22.7);
+                    assert.equal(res.body[0].minWind, 10);
+                    assert.equal(res.body[0].minCloud, 12);
+                    assert.equal(res.body[0].maxHum, 56);
+                    assert.equal(res.body[0].minHum, 56);
+                    assert.equal(res.body[0].minWind, 10);
+                    assert.equal(res.body[0].minCloud, 12);
 
 
                 })

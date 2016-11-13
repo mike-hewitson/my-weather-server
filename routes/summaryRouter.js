@@ -21,7 +21,7 @@ historyRouter.route('/')
             }
         }, {
             "$match": {
-                "sensors.sensor": { "$eq": "Environment" }
+                "sensors.sensor": { "$eq": "Sandton" }
             }
         }, {
             $project: {
@@ -42,11 +42,29 @@ historyRouter.route('/')
                 "avgTemp": {
                     "$avg": "$sensors.temp"
                 },
+                "avgWind": {
+                    "$avg": "$sensors.wind"
+                },
+                "avgCloud": {
+                    "$avg": "$sensors.cloud"
+                },
                 "maxTemp": {
                     "$max": "$sensors.temp"
                 },
                 "minTemp": {
                     "$min": "$sensors.temp"
+                },
+                "maxWind": {
+                    "$max": "$sensors.wind"
+                },
+                "minWind": {
+                    "$min": "$sensors.wind"
+                },
+                "maxCloud": {
+                    "$max": "$sensors.cloud"
+                },
+                "minCloud": {
+                    "$min": "$sensors.cloud"
                 },
                 "maxHum": {
                     "$max": "$sensors.hum"
@@ -87,7 +105,7 @@ historyRouter.route('/:daysBack')
             }
         }, {
             "$match": {
-                "sensors.sensor": { "$eq": "Environment" }
+                "sensors.sensor": { "$eq": "Sandton" }
             }
         }, {
             $project: {
@@ -108,11 +126,29 @@ historyRouter.route('/:daysBack')
                 "avgTemp": {
                     "$avg": "$sensors.temp"
                 },
+                "avgWind": {
+                    "$avg": "$sensors.wind"
+                },
+                "avgCloud": {
+                    "$avg": "$sensors.cloud"
+                },
                 "maxTemp": {
                     "$max": "$sensors.temp"
                 },
                 "minTemp": {
                     "$min": "$sensors.temp"
+                },
+                "maxWind": {
+                    "$max": "$sensors.wind"
+                },
+                "minWind": {
+                    "$min": "$sensors.wind"
+                },
+                "maxCloud": {
+                    "$max": "$sensors.cloud"
+                },
+                "minCloud": {
+                    "$min": "$sensors.cloud"
                 },
                 "maxHum": {
                     "$max": "$sensors.hum"
