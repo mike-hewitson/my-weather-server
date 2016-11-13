@@ -53,10 +53,10 @@ describe('Summary', function() {
         });
     });
 
-    describe('GET /summary/1', function() {
+    describe('GET /summary/Sandton/1', function() {
         it('respond with code HTTP_OK + list of 1 summarized readings', function(done) {
             request(app)
-                .get('/summary/1')
+                .get('/summary/Sandton/1')
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
                 .expect(HTTP_OK)
