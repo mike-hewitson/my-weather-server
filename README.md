@@ -53,6 +53,12 @@ db.createUser(
    }
 )
 
+Include an environment variable for the appropriate logging level when required. If it's not present, it will use 'warn'. Valid values are: { error: 0, warn: 1, info: 2, verbose: 3, debug: 4, silly: 5 }.
+```
+LOGGING='debug'
+```
+
+
 ## Simulations
 
 The script logdata.js will log temperatures (once per run) for testing purposes. It should be run via a scheduler. It does need to following variables added to the environment file. If running on Heroku, the Heroku scheduler works well.
