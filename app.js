@@ -35,8 +35,6 @@ var myLogger = new winston.Logger({
 
 myLogger.transports.console.level = process.env.LOGGING || 'warn';
 
-var url = 'mongodb://'+process.env.DB_USER+":"+process.env.DB_PWD+"@"+process.env.DB_SERVER+':'+process.env.DB_PORT+'/weather';
-// mongoose.connect(url);
 mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));

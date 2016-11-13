@@ -38,11 +38,9 @@ $npm start
 
 Environment variables for the rest server port and the mongo server ip and port are contained in the .env file. This is not contained in the repo. An example is:
 ```
-DB_SERVER='CSJHBAN8G8WN.local'
+MONGDB_URI='mongodb://user:pwd@localhost:27017/weather'
 DB_PORT='27017'
 PORT='3000'
-DB_USER='xxxxx'
-DB_PWD='xxxx'
 ```
 Don't forget to ensure that the correct database users has been created with the correct roles:
 db.createUser(
