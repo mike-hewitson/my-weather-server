@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -39,7 +41,8 @@ historyRouter.route('/:daysBack')
         // var daysMod = parseInt(req.params.daysBack);
         var daysMod = 1;
         dateTo = new Date(Date.now());
-        dateFrom.setDate(dateTo.getDate() - daysMod);
+        dateFrom.setDate(dateTo.getDate() - (req.params.daysBack));
+        // myLogger.info('Date from', dateFrom);
         var query = Readings.aggregate([{
             $match: {
                 date: { $gte: dateFrom }
@@ -47,16 +50,28 @@ historyRouter.route('/:daysBack')
         }, {
             $project: {
                 sensors: 1,
-                date: 1,
-                theMod: { $mod: [{ $millisecond: "$date" }, daysMod] }
-            }
-        }, {
-            $match: {
-                theMod: { $eq: 0 }
+                date: 1
             }
         }, {
             $sort: { date: 1 }
         }]);
+        // var query = Readings.aggregate([{
+        //     $match: {
+        //         date: { $gte: dateFrom }
+        //     }
+        // }, {
+        //     $project: {
+        //         sensors: 1,
+        //         date: 1,
+        //         theMod: { $mod: [{ $millisecond: "$date" }, daysMod] }
+        //     }
+        // }, {
+        //     $match: {
+        //         theMod: { $eq: 0 }
+        //     }
+        // }, {
+        //     $sort: { date: 1 }
+        // }]);
         query.exec(function(err, reading) {
             /* istanbul ignore if */
             if (err) throw err;
