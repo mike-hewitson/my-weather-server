@@ -13,7 +13,7 @@ var sensorSchema = new Schema({
     },
     temp: {
         type: Number,
-        min: 0,
+        min: -10,
         max: 40,
         required: true
     },
@@ -36,6 +36,18 @@ var sensorSchema = new Schema({
         required: true
     },
     hum: {
+        type: Number,
+        min: 0,
+        max: 100,
+        required: true
+    },
+    precip: {
+        type: Number,
+        min: 0,
+        max: 100,
+        required: true
+    },
+    precipProb: {
         type: Number,
         min: 0,
         max: 100,

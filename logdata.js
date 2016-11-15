@@ -40,9 +40,10 @@ forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
     reading.sensors.push({
         sensor: 'Sandton',
         temp: data.currently.temperature.toFixed(1),
-        wind: (data.currently.windSpeed*3.6).toFixed(1),
+        wind: (data.currently.windSpeed * 3.6).toFixed(1),
         pressure: data.currently.pressure.toFixed(1),
         hum: (data.currently.humidity * 100).toFixed(1),
+        precipProb: (data.currently.precipProbability * 100).toFixed(1),
         precip: (data.currently.precipIntensity).toFixed(3),
         cloud: (data.currently.cloudCover * 100).toFixed(1)
     });
@@ -53,9 +54,10 @@ forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
         reading.sensors.push({
             sensor: 'Paradise Beach',
             temp: data.currently.temperature.toFixed(1),
-            wind: (data.currently.windSpeed*3.6).toFixed(1),
+            wind: (data.currently.windSpeed * 3.6).toFixed(1),
             pressure: data.currently.pressure.toFixed(1),
             hum: (data.currently.humidity * 100).toFixed(1),
+            precipProb: (data.currently.precipProbability * 100).toFixed(1),
             precip: (data.currently.precipIntensity).toFixed(3),
             cloud: (data.currently.cloudCover * 100).toFixed(1)
         });
