@@ -27,7 +27,7 @@ myLogger.transports.console.level = process.env.LOGGING || 'warn';
 var url = 'http://' + process.env.REST_SERVER + ':' + process.env.REST_PORT + '/readings';
 
 var options = {
-    exclude: 'hourly,daily,flags',
+    exclude: 'hourly,flags',
     units: 'si'
 };
 
@@ -39,6 +39,10 @@ myLogger.debug(reading);
 forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
     reading.sensors.push({
         sensor: 'Sandton',
+        summary: data.daily.data.summary,
+        sunrise: data.daily.data.sunRiseTime,
+        sunset: data.daily.data.sunsetTime,
+        icon: data.currently.icon,
         temp: data.currently.temperature.toFixed(1),
         wind: (data.currently.windSpeed * 3.6).toFixed(1),
         pressure: data.currently.pressure.toFixed(1),
@@ -53,6 +57,10 @@ forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
     forecastIo.forecast('-34.089', '24.903', options).then(function(data) {
         reading.sensors.push({
             sensor: 'Paradise Beach',
+            summary: data.daily.data.summary,
+            sunrise: data.daily.data.sunRiseTime,
+            sunset: data.daily.data.sunsetTime,
+            icon: data.currently.icon,
             temp: data.currently.temperature.toFixed(1),
             wind: (data.currently.windSpeed * 3.6).toFixed(1),
             pressure: data.currently.pressure.toFixed(1),
