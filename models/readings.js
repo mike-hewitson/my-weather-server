@@ -15,6 +15,10 @@ var sensorSchema = new Schema({
         type: String,
         required: true
     },
+    summaryNow: {
+        type: String,
+        required: true
+    },
     icon: {
         type: String,
         required: true

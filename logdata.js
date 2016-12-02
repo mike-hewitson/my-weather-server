@@ -41,6 +41,7 @@ forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
     reading.sensors.push({
         sensor: 'Sandton',
         summary: data.daily.data[0].summary,
+        summaryNow: data.currently.summary,
         sunrise: new Date(data.daily.data[0].sunriseTime * 1000),
         sunset: new Date(data.daily.data[0].sunsetTime * 1000),
         icon: data.currently.icon,
@@ -59,6 +60,7 @@ forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
         reading.sensors.push({
             sensor: 'Paradise Beach',
             summary: data.daily.data[0].summary,
+            summaryNow: data.currently.summary,
             sunrise: new Date(data.daily.data[0].sunriseTime * 1000),
             sunset: new Date(data.daily.data[0].sunsetTime * 1000),
             icon: data.currently.icon,
