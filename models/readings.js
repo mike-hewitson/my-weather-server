@@ -11,6 +11,22 @@ var sensorSchema = new Schema({
         type: String,
         required: true
     },
+    summary: {
+        type: String,
+        required: true
+    },
+    icon: {
+        type: String,
+        required: true
+    },
+    sunrise: {
+        type: Date,
+        required: true
+    },
+    sunset: {
+        type: Date,
+        required: true
+    },
     temp: {
         type: Number,
         min: -10,
