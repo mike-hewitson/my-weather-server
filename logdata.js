@@ -23,20 +23,20 @@ var myLogger = new winston.Logger({
 });
 
 const icons = {
-    "day-sunny": "wi-forecast-io-clear-day",
-    "night-clear": "wi-forecast-io-clear-day",
-    "rain": "wi-forecast-io-rain",
-    "snow": "wi-forecast-io-snow",
-    "sleet": "wi-forecast-io-sleet",
-    "strong-wind": "wi-forecast-io-wind",
-    "fog": "wi-forecast-io-fog",
-    "cloudy": "wi-forecast-io-cloudy",
-    "day-cloudy": "wi-forecast-io-partly-cloudy-day",
-    "night-cloudy": "wi-forecast-io-partly-cloudy-night",
-    "hail": "wi-forecast-io-hail",
-    "thunderstorm": "wi-forecast-io-thunderstorm",
-    "tornado": "wi-forecast-io-tornado",
-    "clear-day": "wi-forecast-io-clear-day"
+    "day-sunny": "wi-day-sunny",
+    "night-clear": "wi-clear-night",
+    "rain": "wi-rain",
+    "snow": "wi-snow",
+    "sleet": "wi-sleet",
+    "strong-wind": "wi--wind",
+    "fog": "wi-fog",
+    "cloudy": "wi--cloudy",
+    "day-cloudy": "wi--partly-cloudy-day",
+    "night-cloudy": "wi-io-partly-cloudy-night",
+    "hail": "wi-hail",
+    "thunderstorm": "wi-thunderstorm",
+    "tornado": "wi-tornado",
+    "clear-day": "wi-day-sunny"
 };
 
 myLogger.transports.console.level = process.env.LOGGING || 'warn';
