@@ -24,7 +24,7 @@ var myLogger = new winston.Logger({
 
 const icons = {
     "day-sunny": "wi-day-sunny",
-    "clebar-night": "wi-night-clear",
+    "clear-night": "wi-night-clear",
     "rain": "wi-rain",
     "snow": "wi-snow",
     "sleet": "wi-sleet",
