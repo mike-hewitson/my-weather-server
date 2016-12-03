@@ -4,7 +4,7 @@ require('dotenv').config();
 var request = require('request');
 var ForecastIo = require('forecastio');
 var winston = require('winston');
-var Papertrail = require('winston-papertrail').Papertrail;
+// var Papertrail = require('winston-papertrail').Papertrail;
 
 var myLogger = new winston.Logger({
     transports: [
@@ -35,7 +35,8 @@ const icons = {
     "night-cloudy": "wi-forecast-io-partly-cloudy-night",
     "hail": "wi-forecast-io-hail",
     "thunderstorm": "wi-forecast-io-thunderstorm",
-    "tornado": "wi-forecast-io-tornado"
+    "tornado": "wi-forecast-io-tornado",
+    "clear-day": "wi-forecast-io-clear-day"
 };
 
 myLogger.transports.console.level = process.env.LOGGING || 'warn';
@@ -46,6 +47,10 @@ var options = {
     exclude: 'hourly,flags, alerts',
     units: 'si'
 };
+
+// console.log(icons["day-sunny"]);
+// console.log(process.env);
+// myLogger.debug(process.env.API_KEY);
 
 var forecastIo = new ForecastIo(process.env.API_KEY);
 var reading = { date: new Date(), sensors: [] };
