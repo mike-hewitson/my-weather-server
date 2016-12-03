@@ -23,7 +23,7 @@ var myLogger = new winston.Logger({
 });
 
 const icons = {
-    "day-sunny": "wi-day-sunny",
+    "day-sunny": "wi-forcast-io-clear-day",
     "night-clear": "wi-clear-night",
     "rain": "wi-rain",
     "snow": "wi-snow",
@@ -36,7 +36,7 @@ const icons = {
     "hail": "wi-hail",
     "thunderstorm": "wi-thunderstorm",
     "tornado": "wi-tornado",
-    "clear-day": "wi-day-sunny"
+    "clear-day": "wi-forecast-io-clear-day"
 };
 
 myLogger.transports.console.level = process.env.LOGGING || 'warn';
