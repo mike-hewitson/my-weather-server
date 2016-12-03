@@ -48,10 +48,6 @@ var options = {
     units: 'si'
 };
 
-// console.log(icons["day-sunny"]);
-// console.log(process.env);
-// myLogger.debug(process.env.API_KEY);
-
 var forecastIo = new ForecastIo(process.env.API_KEY);
 var reading = { date: new Date(), sensors: [] };
 myLogger.debug(reading);
