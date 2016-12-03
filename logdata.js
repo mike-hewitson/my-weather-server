@@ -23,20 +23,20 @@ var myLogger = new winston.Logger({
 });
 
 const icons = {
-    "day-sunny": "wi-forcast-io-clear-day",
-    "night-clear": "wi-clear-night",
+    "day-sunny": "wi-day-sunny",
+    "clebar-night": "wi-night-clear",
     "rain": "wi-rain",
     "snow": "wi-snow",
     "sleet": "wi-sleet",
     "strong-wind": "wi--wind",
     "fog": "wi-fog",
-    "cloudy": "wi--cloudy",
+    "cloudy": "wi-cloudy",
     "day-cloudy": "wi--partly-cloudy-day",
-    "night-cloudy": "wi-io-partly-cloudy-night",
+    "night-cloudy": "wi-partly-cloudy-night",
     "hail": "wi-hail",
     "thunderstorm": "wi-thunderstorm",
     "tornado": "wi-tornado",
-    "clear-day": "wi-forecast-io-clear-day"
+    "clear-day": "wi-day-sunny"
 };
 
 myLogger.transports.console.level = process.env.LOGGING || 'warn';
@@ -55,6 +55,11 @@ myLogger.debug(reading);
 // var date = new Date(UNIX_Timestamp * 1000)
 
 forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
+    myLogger.debug(data);
+    if (!icons[data.currently.icon]) {
+        myLogger.error("Icon not in lookup :" + data.currently.icon);
+        data.currently.icon = "day-sunny";
+    }
     reading.sensors.push({
         sensor: 'Sandton',
         summary: data.daily.data[0].summary,
@@ -74,6 +79,11 @@ forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
     myLogger.debug(reading);
 
     forecastIo.forecast('-34.089', '24.903', options).then(function(data) {
+        myLogger.debug(data);
+        if (!icons[data.currently.icon]) {
+            myLogger.error("Icon not in lookup :" + data.currently.icon);
+            data.currently.icon = "day-sunny";
+        }
         reading.sensors.push({
             sensor: 'Paradise Beach',
             summary: data.daily.data[0].summary,
