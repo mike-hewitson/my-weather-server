@@ -101,26 +101,52 @@ forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
         });
         myLogger.debug(reading);
 
-        var req = {
-            url: url,
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            json: reading
-        };
+        // lat":"51Âº30'54.24\" N","lng":0Âº05'30.38\" W"
 
-        myLogger.info(req);
-
-        request(req, function(error, response, body) {
-            if (response.statusCode === 201) {
-                myLogger.info('document saved');
-                process.exit();
-            } else {
-                myLogger.error(response.statusCode);
-                myLogger.error(body);
-                process.exit(1);
+        forecastIo.forecast('51.30', '05.05', options).then(function(data) {
+            myLogger.debug(data);
+            if (!icons[data.currently.icon]) {
+                myLogger.error("Icon not in lookup :" + data.currently.icon);
+                data.currently.icon = "day-sunny";
             }
+            reading.sensors.push({
+                sensor: 'London',
+                summary: data.daily.data[0].summary,
+                summaryNow: data.currently.summary,
+                sunrise: new Date(data.daily.data[0].sunriseTime * 1000),
+                sunset: new Date(data.daily.data[0].sunsetTime * 1000),
+                icon: icons[data.currently.icon],
+                temp: data.currently.temperature.toFixed(1),
+                wind: (data.currently.windSpeed * 3.6).toFixed(1),
+                pressure: data.currently.pressure.toFixed(1),
+                hum: (data.currently.humidity * 100).toFixed(1),
+                precipProb: (data.currently.precipProbability * 100).toFixed(1),
+                precip: (data.currently.precipIntensity).toFixed(3),
+                cloud: (data.currently.cloudCover * 100).toFixed(1)
+            });
+            myLogger.debug(reading);
+
+            var req = {
+                url: url,
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                json: reading
+            };
+
+            myLogger.info(req);
+
+            request(req, function(error, response, body) {
+                if (response.statusCode === 201) {
+                    myLogger.info('document saved');
+                    process.exit();
+                } else {
+                    myLogger.error(response.statusCode);
+                    myLogger.error(body);
+                    process.exit(1);
+                }
+            });
         });
     });
 });
