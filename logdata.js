@@ -1,6 +1,6 @@
 "use strict";
 
-require('dotenv').config();
+// require('dotenv').config();
 var request = require('request');
 var ForecastIo = require('forecastio');
 var winston = require('winston');
