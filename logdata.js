@@ -103,7 +103,7 @@ forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
 
         // lat":"51Âº30'54.24\" N","lng":0Âº05'30.38\" W"
 
-        forecastIo.forecast('51.30', '05.05', options).then(function(data) {
+        forecastIo.forecast('51.317', '0.057', options).then(function(data) {
             myLogger.debug(data);
             if (!icons[data.currently.icon]) {
                 myLogger.error("Icon not in lookup :" + data.currently.icon);
