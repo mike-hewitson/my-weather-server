@@ -1,6 +1,6 @@
 "use strict";
 
-require('dotenv').config();
+// require('dotenv').config();
 var request = require('request');
 var ForecastIo = require('forecastio');
 var winston = require('winston');
@@ -28,11 +28,13 @@ const icons = {
     "rain": "wi-rain",
     "snow": "wi-snow",
     "sleet": "wi-sleet",
-    "strong-wind": "wi--wind",
+    "strong-wind": "wi-wind",
     "fog": "wi-fog",
     "cloudy": "wi-cloudy",
-    "day-cloudy": "wi--partly-cloudy-day",
-    "night-cloudy": "wi-partly-cloudy-night",
+    "day-cloudy": "wi-day-cloudy",
+    "partly-cloudy-day": "wi-day-sunny-overcast",
+    "night-cloudy": "wi-night-cloudy",
+    "partly-cloudy-night": "wi-night-partly-cloudy",
     "hail": "wi-hail",
     "thunderstorm": "wi-thunderstorm",
     "tornado": "wi-tornado",
@@ -103,7 +105,7 @@ forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
 
         // lat":"51Âº30'54.24\" N","lng":0Âº05'30.38\" W"
 
-        forecastIo.forecast('51.30', '05.05', options).then(function(data) {
+        forecastIo.forecast('51.317', '0.057', options).then(function(data) {
             myLogger.debug(data);
             if (!icons[data.currently.icon]) {
                 myLogger.error("Icon not in lookup :" + data.currently.icon);
