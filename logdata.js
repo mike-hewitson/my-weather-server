@@ -109,22 +109,22 @@ forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
                 myLogger.error("Icon not in lookup :" + data.currently.icon);
                 data.currently.icon = "day-sunny";
             }
-            reading.sensors.push({
-                sensor: 'London',
-                summary: data.daily.data[0].summary,
-                summaryNow: data.currently.summary,
-                sunrise: new Date(data.daily.data[0].sunriseTime * 1000),
-                sunset: new Date(data.daily.data[0].sunsetTime * 1000),
-                icon: icons[data.currently.icon],
-                temp: data.currently.temperature.toFixed(1),
-                wind: (data.currently.windSpeed * 3.6).toFixed(1),
-                pressure: data.currently.pressure.toFixed(1),
-                hum: (data.currently.humidity * 100).toFixed(1),
-                precipProb: (data.currently.precipProbability * 100).toFixed(1),
-                precip: (data.currently.precipIntensity).toFixed(3),
-                cloud: (data.currently.cloudCover * 100).toFixed(1)
-            });
-            myLogger.debug(reading);
+            // reading.sensors.push({
+            //     sensor: 'London',
+            //     summary: data.daily.data[0].summary,
+            //     summaryNow: data.currently.summary,
+            //     sunrise: new Date(data.daily.data[0].sunriseTime * 1000),
+            //     sunset: new Date(data.daily.data[0].sunsetTime * 1000),
+            //     icon: icons[data.currently.icon],
+            //     temp: data.currently.temperature.toFixed(1),
+            //     wind: (data.currently.windSpeed * 3.6).toFixed(1),
+            //     pressure: data.currently.pressure.toFixed(1),
+            //     hum: (data.currently.humidity * 100).toFixed(1),
+            //     precipProb: (data.currently.precipProbability * 100).toFixed(1),
+            //     precip: (data.currently.precipIntensity).toFixed(3),
+            //     cloud: (data.currently.cloudCover * 100).toFixed(1)
+            // });
+            // myLogger.debug(reading);
 
             var req = {
                 url: url,
