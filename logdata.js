@@ -26,6 +26,7 @@ const icons = {
     "day-sunny": "wi-day-sunny",
     "clear-night": "wi-night-clear",
     "rain": "wi-rain",
+    "wind": "wi-strong-wind",
     "snow": "wi-snow",
     "sleet": "wi-sleet",
     "strong-wind": "wi-wind",
@@ -60,7 +61,7 @@ forecastIo.forecast('-26.097', '28.053', options).then(function(data) {
     myLogger.debug(data);
     if (!icons[data.currently.icon]) {
         myLogger.error("Icon not in lookup :" + data.currently.icon);
-        data.currently.icon = "day-sunny";
+        data.currently.icon = "tornado";
     }
     reading.sensors.push({
         sensor: 'Sandton',
